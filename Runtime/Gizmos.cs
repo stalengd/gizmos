@@ -249,7 +249,7 @@ namespace Popcron
                 Vector3[] array = ArrayPool<Vector3>.Shared.Rent(points);
                 Array.Copy(buffer, array, points);
                 GizmosInstance.Submit(array, color, dashed);
-                ArrayPool<Vector3>.Shared.Return(array);
+                //ArrayPool<Vector3>.Shared.Return(array);
             }
         }
 

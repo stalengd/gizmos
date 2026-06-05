@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using System.Buffers;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -88,6 +90,12 @@ namespace Popcron
 
                 return defaultMaterial;
             }
+        }
+
+        public static void ResetQueue()
+        {
+            var inst = GetOrCreate();
+            inst.queueIndex = 0;
         }
 
         internal static GizmosInstance GetOrCreate()
@@ -187,6 +195,8 @@ namespace Popcron
             }
 
             inst.queue[inst.queueIndex].color = color ?? Color.white;
+            if (inst.queue[inst.queueIndex].points is { Length: > 0 } oldPoints)
+                ArrayPool<Vector3>.Shared.Return(oldPoints);
             inst.queue[inst.queueIndex].points = points;
             inst.queue[inst.queueIndex].dashed = dashed;
 
