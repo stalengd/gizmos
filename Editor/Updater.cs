@@ -16,7 +16,7 @@ public class Updater : Editor
 {
     public class Package
     {
-        public string version;
+        public string version = null!;
     }
 
     private const string PackageName = "com.popcron.gizmos";
@@ -95,7 +95,7 @@ public class Updater : Editor
             }
         }
 
-        return null;
+        return null!;
     }
 
     [MenuItem(CheckForUpdateText, false, 0)]

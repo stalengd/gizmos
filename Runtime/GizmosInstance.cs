@@ -32,12 +32,12 @@ namespace Popcron
     {
         private const int DefaultQueueSize = 4096;
 
-        private static GizmosInstance instance;
+        private static GizmosInstance instance = null!;
         private static bool hotReloaded = true;
-        private static Material defaultMaterial;
+        private static Material defaultMaterial = null!;
         private static Plane[] cameraPlanes = new Plane[6];
 
-        private Material overrideMaterial;
+        private Material overrideMaterial = null!;
         private int queueIndex = 0;
         private int lastFrame;
         private Element[] queue = new Element[DefaultQueueSize];
@@ -103,7 +103,7 @@ namespace Popcron
             if (hotReloaded || !instance)
             {
                 bool markDirty = false;
-                GizmosInstance[] gizmosInstances = FindObjectsOfType<GizmosInstance>();
+                GizmosInstance[] gizmosInstances = FindObjectsByType<GizmosInstance>(FindObjectsSortMode.None);
                 for (int i = 0; i < gizmosInstances.Length; i++)
                 {
                     instance = gizmosInstances[i];

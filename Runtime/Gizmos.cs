@@ -6,7 +6,7 @@ namespace Popcron
 {
     public class Gizmos
     {
-        private static string _prefsKey = null;
+        private static string _prefsKey = null!;
         private static int? _bufferSize = null;
         private static bool? _enabled = null;
         private static float? _dashGap = null;
@@ -129,7 +129,7 @@ namespace Popcron
         [Obsolete("This property is obsolete. Subscribe to CameraFilter predicate instead and return true for your custom camera.", false)]
         public static Camera Camera
         {
-            get => null;
+            get => null!;
             set
             {
 

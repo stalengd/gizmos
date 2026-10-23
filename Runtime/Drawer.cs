@@ -7,7 +7,7 @@ namespace Popcron
 {
     public abstract class Drawer
     {
-        private static Dictionary<Type, Drawer> typeToDrawer = null;
+        private static Dictionary<Type, Drawer> typeToDrawer = null!;
 
         public abstract int Draw(ref Vector3[] buffer, params object[] args);
 
@@ -63,7 +63,7 @@ namespace Popcron
             }
             else
             {
-                return null;
+                return null!;
             }
         }
     }
